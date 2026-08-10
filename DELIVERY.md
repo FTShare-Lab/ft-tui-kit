@@ -46,7 +46,7 @@ Windows 资产，除非这些边界已经被重新设计并验证。
 - `dist/index.js`；
 - `src/` 中运行时读取的命令资源；
 - `canvases/` manifests、launcher、Bun renderer 和当前平台二进制；
-- `.opencode/skill/`；
+- `skills/`；
 - `package.json`、`bun.lock`；
 - `run-canvas.sh`、`ftopencode`；
 - LICENSE 和必要文档。

@@ -108,7 +108,6 @@ package_root="$stage_root/$package_name"
 mkdir -p -- "$package_root"
 
 payload=(
-  .opencode
   Cargo.lock
   Cargo.toml
   CHANGELOG.md
@@ -124,6 +123,7 @@ payload=(
   ftopencode-build
   package.json
   run-canvas.sh
+  skills
   src
   tsconfig.json
 )

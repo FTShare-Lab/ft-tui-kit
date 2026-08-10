@@ -8,7 +8,6 @@ export default tseslint.config(
     ignores: [
       'dist/**',
       'node_modules/**',
-      '.opencode/**',
       'canvases/*/bin/**',
       'canvases/*/target/**',
       '*.config.js',
