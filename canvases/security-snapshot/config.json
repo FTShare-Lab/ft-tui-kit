@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "security-snapshot",
+  "description": "FTShare A-share security snapshot. Config accepts only one exchange-qualified stock symbol, such as 600519.SH; inline security data is rejected.",
+  "defaultScenario": "overview",
+  "scenarios": ["overview"],
+  "capabilities": {
+    "state": true,
+    "selection": true,
+    "context": true,
+    "action": true,
+    "artifacts": true
+  },
+  "entry": {
+    "type": "command",
+    "command": ["bun", "{canvasDir}/launcher.ts", "--launch-file", "{launchFile}"]
+  }
+}

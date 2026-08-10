@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "chart-data.schema.json",
+  "title": "OpenCode Chart Canvas Data",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "title", "table", "axes", "series", "display"],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "subtitle": {
+      "type": "string",
+      "maxLength": 240
+    },
+    "table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "rows"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "idField": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000,
+          "items": {
+            "type": "object",
+            "minProperties": 2,
+            "additionalProperties": {
+              "type": ["string", "number", "boolean", "null"]
+            }
+          }
+        }
+      }
+    },
+    "axes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x", "y"],
+      "properties": {
+        "x": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["field"],
+          "properties": {
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "maxLength": 80
+            }
+          }
+        },
+        "y": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "label": {
+              "type": "string",
+              "maxLength": 80
+            },
+            "min": {
+              "const": 0
+            },
+            "max": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "format": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "decimals": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 6,
+                  "default": 0
+                },
+                "prefix": {
+                  "type": "string",
+                  "maxLength": 12
+                },
+                "suffix": {
+                  "type": "string",
+                  "maxLength": 12
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "label"],
+        "properties": {
+          "field": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "color": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32,
+            "default": "cyan"
+          }
+        }
+      }
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["view"],
+      "properties": {
+        "view": {
+          "enum": ["bar", "line", "both"]
+        },
+        "showLegend": {
+          "type": "boolean",
+          "default": true
+        },
+        "showValues": {
+          "enum": ["never", "selected", "always"],
+          "default": "selected"
+        },
+        "barWidth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8,
+          "default": 3
+        },
+        "barGap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 8,
+          "default": 1
+        },
+        "groupGap": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 12,
+          "default": 2
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean", "null"]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "dag",
+  "description": "Interactive directed acyclic graph renderer. Config is either an inline DAG document with schemaVersion, title, nodes, and edges, or exactly one absolute JSON path field: data_file or dataFile. Nodes auto-size within layout min/max bounds; labels and outgoing bend lanes expand connection gaps; omitted edge colors are stably grouped by target node; only connection segments use Braille cells, while arrows use normal terminal glyphs. Oversized graphs can be panned by dragging.",
+  "defaultScenario": "display",
+  "scenarios": ["display"],
+  "capabilities": {
+    "state": true,
+    "selection": true,
+    "context": true,
+    "action": true,
+    "artifacts": true
+  },
+  "entry": {
+    "type": "command",
+    "command": ["bun", "{canvasDir}/launcher.ts", "--launch-file", "{launchFile}"]
+  }
+}

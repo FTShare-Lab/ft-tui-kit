@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Security Snapshot Canvas Config",
+  "type": "object",
+  "required": ["symbol"],
+  "properties": {
+    "symbol": { "type": "string", "pattern": "^[0-9]{6}\\.(SH|SZ|BJ)$" }
+  },
+  "additionalProperties": false
+}

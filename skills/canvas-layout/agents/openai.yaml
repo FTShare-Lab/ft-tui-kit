@@ -1,0 +1,4 @@
+interface:
+  display_name: 'Canvas Layout'
+  short_description: 'Arrange multiple canvases in safe tmux layouts'
+  default_prompt: 'Use $canvas-layout to show two Canvas widgets side by side.'

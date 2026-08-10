@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "candlesticks",
+  "description": "Interactive candlestick and volume renderer for mainland stocks. Config requires exactly one exchange-qualified stock identifier in tag or its code alias, such as 000001.SZ.",
+  "defaultScenario": "kline",
+  "scenarios": ["kline"],
+  "capabilities": {
+    "state": true,
+    "selection": true,
+    "context": true,
+    "action": true,
+    "artifacts": true
+  },
+  "entry": {
+    "type": "command",
+    "command": ["bun", "{canvasDir}/launcher.ts", "--launch-file", "{launchFile}"]
+  }
+}

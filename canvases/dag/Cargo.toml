@@ -1,0 +1,18 @@
+[package]
+name = "ft-financial-canvas-dag"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "Directed acyclic graph renderer for the ft financial canvas v2 protocol."
+license = "MIT"
+
+[[bin]]
+name = "dag"
+path = "src/main.rs"
+
+[dependencies]
+ft-canvas-runtime = { path = "../_sdk-rust" }
+ratatui.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+unicode-width.workspace = true

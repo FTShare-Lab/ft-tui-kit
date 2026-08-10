@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+session_name="${FTOPENCODE_TMUX_SESSION:-ftopencode}"
+assume_yes="${FTOPENCODE_ASSUME_YES:-0}"
+
+while (($# > 0)); do
+  case "$1" in
+    -y|--yes)
+      assume_yes=1
+      shift
+      ;;
+    --session)
+      if (($# < 2)); then
+        printf 'ftopencode: --session requires a name\n' >&2
+        exit 2
+      fi
+      session_name="$2"
+      shift 2
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+if ! opencode_bin="$(command -v opencode)"; then
+  printf 'ftopencode: opencode was not found on PATH\n' >&2
+  exit 127
+fi
+
+if [[ -n "${TMUX:-}" ]]; then
+  exec "$opencode_bin" "$@"
+fi
+
+if ! command -v tmux >/dev/null 2>&1; then
+  printf 'ftopencode: tmux was not found on PATH\n' >&2
+  exit 127
+fi
+
+if [[ "$assume_yes" != "1" ]]; then
+  if [[ ! -t 0 ]]; then
+    printf 'ftopencode: current shell is not inside tmux; rerun interactively or pass --yes\n' >&2
+    exit 1
+  fi
+
+  printf 'Current shell is not inside tmux. Start or attach session "%s" and launch OpenCode? [Y/n] ' "$session_name" >&2
+  read -r answer
+  case "${answer:-y}" in
+    y|Y|yes|YES|Yes)
+      ;;
+    *)
+      printf 'ftopencode: cancelled\n' >&2
+      exit 1
+      ;;
+  esac
+fi
+
+printf -v opencode_command '%q ' "$opencode_bin" "$@"
+exec tmux new-session -A -s "$session_name" -c "$PWD" "$opencode_command"

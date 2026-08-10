@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+canvas_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+exec "$canvas_dir/../_sdk-rust/build-renderer" "$canvas_dir" ft-financial-canvas-candlesticks candlesticks "$@"

@@ -1,0 +1,12 @@
+[package]
+name = "ft-canvas-runtime"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "Renderer-side Canvas v2 socket runtime for ft financial canvas."
+license = "MIT"
+publish = false
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true

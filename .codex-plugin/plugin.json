@@ -1,0 +1,36 @@
+{
+  "name": "ft-financial-canvas",
+  "version": "0.1.2+codex.20260803074947",
+  "description": "Terminal-native financial and data visualizations for Codex.",
+  "author": {
+    "name": "Feitu"
+  },
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "finance",
+    "visualization",
+    "terminal",
+    "tmux"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Financial Canvas",
+    "shortDescription": "Interactive financial visualizations in your terminal",
+    "longDescription": "Open interactive financial charts, market tables, security snapshots, news, and dependency graphs beside Codex in tmux.",
+    "developerName": "Feitu",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Visualization",
+      "Financial Analysis"
+    ],
+    "defaultPrompt": [
+      "Show an interactive candlestick chart for 000001.SZ.",
+      "Compare two datasets side by side in Canvas widgets.",
+      "Visualize this dependency graph and let me select nodes."
+    ],
+    "brandColor": "#10B981"
+  }
+}

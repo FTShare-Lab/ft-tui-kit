@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "News List Canvas Config",
+  "type": "object",
+  "required": ["query"],
+  "properties": {
+    "query": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "limit": { "type": "integer", "minimum": 1, "maximum": 50, "default": 20 },
+    "startTime": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "endTime": { "type": "string", "minLength": 1, "maxLength": 64 },
+    "highlights": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": ["newsId"],
+        "properties": {
+          "newsId": { "type": "string", "pattern": "^[0-9]+$", "maxLength": 32 },
+          "reason": { "type": "string", "maxLength": 240 }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

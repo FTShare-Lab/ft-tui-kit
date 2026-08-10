@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "title": "Financial research pipeline",
+  "subtitle": "Example left-to-right dependency graph",
+  "nodes": [
+    { "id": "prices", "label": "Market prices", "description": "Daily OHLCV", "color": "cyan" },
+    { "id": "fundamentals", "label": "Fundamentals", "description": "Statements and ratios", "color": "yellow" },
+    { "id": "features", "label": "Feature build", "description": "Normalize and join", "color": "green" },
+    { "id": "risk", "label": "Risk model", "description": "Volatility and exposure", "color": "magenta" },
+    { "id": "report", "label": "Agent report", "description": "Evidence-backed summary", "color": "white" }
+  ],
+  "edges": [
+    { "from": "prices", "to": "features", "label": "returns" },
+    { "from": "fundamentals", "to": "features", "label": "metrics" },
+    { "from": "prices", "to": "risk" },
+    { "from": "features", "to": "report" },
+    { "from": "risk", "to": "report" }
+  ],
+  "layout": {
+    "direction": "left-to-right",
+    "layerGap": 8,
+    "nodeGap": 2,
+    "padding": 2
+  },
+  "metadata": {
+    "source": "Synthetic example"
+  }
+}

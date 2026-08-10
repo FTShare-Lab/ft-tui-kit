@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "name": "news-list",
+  "description": "Interactive FTShare semantic news search with scrolling cards, clickable source links, stable-ID AI highlights, selection, context, and explanation actions.",
+  "defaultScenario": "search",
+  "scenarios": ["search"],
+  "capabilities": {
+    "state": true,
+    "selection": true,
+    "context": true,
+    "action": true
+  },
+  "entry": {
+    "type": "command",
+    "command": ["bun", "{canvasDir}/launcher.ts", "--launch-file", "{launchFile}"]
+  }
+}

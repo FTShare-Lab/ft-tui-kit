@@ -1,0 +1,18 @@
+[package]
+name = "ft-financial-canvas-market-table"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "Market table renderer for the ft financial canvas v2 protocol."
+license = "MIT"
+
+[[bin]]
+name = "market-table"
+path = "src/main.rs"
+
+[dependencies]
+ft-canvas-runtime = { path = "../_sdk-rust" }
+ratatui.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true

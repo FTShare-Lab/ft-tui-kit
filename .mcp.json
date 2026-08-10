@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "financial-canvas": {
+      "command": "bun",
+      "args": ["dist/codex-mcp.js"],
+      "cwd": ".",
+      "env_vars": ["TMUX", "TMUX_PANE"]
+    }
+  }
+}

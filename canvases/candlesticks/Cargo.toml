@@ -1,0 +1,29 @@
+[package]
+name = "ft-financial-canvas-candlesticks"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+description = "Candlesticks renderer for the ft financial canvas v2 protocol."
+license = "MIT OR Apache-2.0"
+
+[lib]
+name = "candlesticks_chart"
+path = "src/lib.rs"
+
+[[bin]]
+name = "candlesticks"
+path = "src/main.rs"
+
+[dependencies]
+chrono.workspace = true
+csv.workspace = true
+ft-canvas-runtime = { path = "../_sdk-rust" }
+ratatui.workspace = true
+ratatui-core.workspace = true
+ratatui-widgets.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+tempfile.workspace = true

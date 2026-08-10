@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "market-table",
+  "description": "Interactive FTShare market table. Config accepts exactly one fixed English preset or an absolute local JSON data_file; inline quote rows are rejected.",
+  "defaultScenario": "quotes",
+  "scenarios": ["quotes"],
+  "capabilities": {
+    "state": true,
+    "selection": true,
+    "context": true,
+    "action": true,
+    "artifacts": true
+  },
+  "entry": {
+    "type": "command",
+    "command": ["bun", "{canvasDir}/launcher.ts", "--launch-file", "{launchFile}"]
+  }
+}

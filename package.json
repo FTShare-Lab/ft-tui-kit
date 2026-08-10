@@ -1,0 +1,80 @@
+{
+  "name": "ft-financial-canvas",
+  "version": "0.1.2",
+  "private": true,
+  "description": "Terminal-native financial canvases for OpenCode and Codex, evolved from the Feitu July Hackathon",
+  "type": "module",
+  "main": "./dist/index.js",
+  "bin": {
+    "ftcodex": "./ftcodex",
+    "ftopencode": "./ftopencode",
+    "ftopencode-build": "./ftopencode-build"
+  },
+  "exports": {
+    ".": {
+      "bun": "./src/index.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "./ftopencode-build",
+    "build:plugin": "bun build ./src/index.ts --target bun --outfile dist/index.js && bun build ./src/hosts/codex/mcp-server.ts --target bun --outfile dist/codex-mcp.js && bun build ./src/hosts/codex/hook.ts --target bun --outfile dist/codex-hook.js",
+    "codex:install": "bun run ./scripts/install-codex-plugin.ts",
+    "prepack": "bun run build:plugin",
+    "canvas": "bun run canvases/launcher.ts",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src canvases scripts --max-warnings 0",
+    "lint:fix": "eslint src canvases scripts --fix --max-warnings 0",
+    "format": "prettier --write \"{src,canvases,scripts}/**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"{src,canvases,scripts}/**/*.{ts,tsx}\"",
+    "check": "bun run typecheck && bun run lint && bun run format:check"
+  },
+  "files": [
+    "dist",
+    ".codex-plugin",
+    ".mcp.json",
+    "hooks",
+    "src",
+    "canvases",
+    "skills",
+    "scripts/install-codex-plugin.ts",
+    "run-canvas.sh",
+    "ftcodex",
+    "ftopencode",
+    "ftopencode-build"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "@opencode-ai/plugin": "^1.0.85",
+    "commander": "^14.0.2",
+    "ink": "^6.6.0",
+    "react": "^19.2.3",
+    "zod": "^4.1.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.11.5",
+    "@types/react": "^19.2.7",
+    "bun-types": "latest",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^10.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5",
+    "typescript-eslint": "^8.0.0"
+  },
+  "keywords": [
+    "codex",
+    "opencode",
+    "financial-canvas",
+    "finance",
+    "candlesticks",
+    "chart",
+    "tui",
+    "terminal",
+    "tmux",
+    "ratatui",
+    "ink"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Market Table Canvas Config",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["preset"],
+      "properties": {
+        "preset": {
+          "enum": [
+            "a-share-top-gainers",
+            "a-share-top-losers",
+            "a-share-most-active",
+            "a-share-highest-turnover-rate",
+            "a-share-largest-market-cap"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["data_file"],
+      "properties": { "data_file": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "required": ["dataFile"],
+      "properties": { "dataFile": { "type": "string", "minLength": 1 } },
+      "additionalProperties": false
+    }
+  ]
+}

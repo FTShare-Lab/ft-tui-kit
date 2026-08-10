@@ -1,0 +1,18 @@
+{
+  "description": "Attach pending terminal Canvas interactions to the next Codex prompt.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun \"${PLUGIN_ROOT}/dist/codex-hook.js\"",
+            "timeout": 5,
+            "statusMessage": "Attaching Canvas interaction context",
+            "additionalContextLimit": 32768
+          }
+        ]
+      }
+    ]
+  }
+}

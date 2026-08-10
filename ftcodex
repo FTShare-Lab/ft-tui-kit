@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+session_name="${FTCODEX_TMUX_SESSION:-ftcodex}"
+assume_yes="${FTCODEX_ASSUME_YES:-0}"
+use_alt_screen=0
+
+while (($# > 0)); do
+  case "$1" in
+    -y|--yes)
+      assume_yes=1
+      shift
+      ;;
+    --session)
+      if (($# < 2)); then
+        printf 'ftcodex: --session requires a name\n' >&2
+        exit 2
+      fi
+      session_name="$2"
+      shift 2
+      ;;
+    --alt-screen)
+      use_alt_screen=1
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;
+    *)
+      break
+      ;;
+  esac
+done
+
+codex_args=("$@")
+if [[ "$use_alt_screen" != "1" ]]; then
+  codex_args=(--no-alt-screen "${codex_args[@]}")
+fi
+
+if ! codex_bin="$(command -v codex)"; then
+  printf 'ftcodex: codex was not found on PATH\n' >&2
+  exit 127
+fi
+
+if [[ -n "${TMUX:-}" ]]; then
+  exec "$codex_bin" "${codex_args[@]}"
+fi
+
+if ! command -v tmux >/dev/null 2>&1; then
+  printf 'ftcodex: tmux was not found on PATH\n' >&2
+  exit 127
+fi
+
+if [[ "$assume_yes" != "1" ]]; then
+  if [[ ! -t 0 ]]; then
+    printf 'ftcodex: current shell is not inside tmux; rerun interactively or pass --yes\n' >&2
+    exit 1
+  fi
+
+  printf 'Current shell is not inside tmux. Start or attach session "%s" and launch Codex? [Y/n] ' "$session_name" >&2
+  read -r answer
+  case "${answer:-y}" in
+    y|Y|yes|YES|Yes)
+      ;;
+    *)
+      printf 'ftcodex: cancelled\n' >&2
+      exit 1
+      ;;
+  esac
+fi
+
+printf -v codex_command '%q ' "$codex_bin" "${codex_args[@]}"
+exec tmux new-session -A -s "$session_name" -c "$PWD" "$codex_command"

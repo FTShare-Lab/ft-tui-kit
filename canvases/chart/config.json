@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "name": "chart",
+  "description": "Interactive grouped bar/line chart renderer. Config requires data_file (or dataFile) pointing to an absolute JSON document with schemaVersion, title, table{name,rows}, axes{x{field},y}, series[{field,label,color?}], and display{view}; display.view must be bar, line, or both.",
+  "defaultScenario": "bar-graph",
+  "scenarios": ["bar-graph"],
+  "capabilities": {
+    "state": true,
+    "selection": true,
+    "context": true,
+    "action": true,
+    "artifacts": true
+  },
+  "entry": {
+    "type": "command",
+    "command": ["bun", "{canvasDir}/launcher.ts", "--launch-file", "{launchFile}"]
+  }
+}

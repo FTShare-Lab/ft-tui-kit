@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "title": "2025 Quarterly Revenue and Cost",
+  "subtitle": "CNY millions",
+  "table": {
+    "name": "quarterly_financials",
+    "idField": "quarter",
+    "rows": [
+      { "quarter": "Q1", "revenue": 128.4, "cost": 91.2 },
+      { "quarter": "Q2", "revenue": 146.8, "cost": 97.5 },
+      { "quarter": "Q3", "revenue": 139.1, "cost": 102.3 },
+      { "quarter": "Q4", "revenue": 172.6, "cost": 110.8 }
+    ]
+  },
+  "axes": {
+    "x": { "field": "quarter", "label": "Quarter" },
+    "y": {
+      "label": "Amount",
+      "min": 0,
+      "max": 200,
+      "format": { "decimals": 1, "prefix": "CNY ", "suffix": "M" }
+    }
+  },
+  "series": [
+    { "field": "revenue", "label": "Revenue", "color": "cyan" },
+    { "field": "cost", "label": "Cost", "color": "yellow" }
+  ],
+  "display": {
+    "view": "bar",
+    "showLegend": true,
+    "showValues": "selected",
+    "barWidth": 3,
+    "barGap": 1,
+    "groupGap": 2
+  },
+  "metadata": {
+    "source": "Synthetic example data",
+    "asOf": "2025-12-31"
+  }
+}

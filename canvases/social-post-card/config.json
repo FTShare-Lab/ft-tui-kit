@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "name": "social-post-card",
+  "description": "Plugin-internal review card for an automatically generated technical social post.",
+  "defaultScenario": "review",
+  "scenarios": ["review"],
+  "internalOnly": true,
+  "capabilities": {
+    "command": true
+  },
+  "entry": {
+    "type": "bun-ink",
+    "module": "./index.tsx",
+    "export": "SocialPostCard"
+  }
+}
