@@ -13,7 +13,7 @@ export function resolvePluginRoot(): string {
     if (!candidate) continue;
     if (
       existsSync(path.join(candidate, 'canvases')) &&
-      existsSync(path.join(candidate, 'run-canvas.sh'))
+      existsSync(path.join(candidate, 'canvases', 'launcher.ts'))
     ) {
       return candidate;
     }

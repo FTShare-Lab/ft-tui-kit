@@ -48,7 +48,7 @@ Windows 资产，除非这些边界已经被重新设计并验证。
 - `canvases/` manifests、launcher、Bun renderer 和当前平台二进制；
 - `skills/`；
 - `package.json`、`bun.lock`；
-- `run-canvas.sh`、`ftopencode`；
+- `ftopencode`；
 - LICENSE 和必要文档。
 
 不得包含：

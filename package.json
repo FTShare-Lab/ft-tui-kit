@@ -38,7 +38,6 @@
     "canvases",
     "skills",
     "scripts/install-codex-plugin.ts",
-    "run-canvas.sh",
     "ftcodex",
     "ftopencode",
     "ftopencode-build"

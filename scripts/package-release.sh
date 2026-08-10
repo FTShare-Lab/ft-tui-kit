@@ -122,7 +122,6 @@ payload=(
   ftopencode
   ftopencode-build
   package.json
-  run-canvas.sh
   skills
   src
   tsconfig.json
@@ -146,8 +145,7 @@ done
 
 chmod 755 \
   "$package_root/ftopencode" \
-  "$package_root/ftopencode-build" \
-  "$package_root/run-canvas.sh"
+  "$package_root/ftopencode-build"
 
 archive="$output_dir/$package_name.tar.gz"
 archive_tmp="$stage_root/$package_name.tar.gz"

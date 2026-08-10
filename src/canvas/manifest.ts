@@ -97,7 +97,15 @@ function manifestFromConfig(canvasDir: string): CanvasManifest {
     scenarios: config.scenarios,
     capabilities: config.capabilities ?? {},
     internalOnly: config.internalOnly ?? false,
-    command: ['{pluginRoot}/run-canvas.sh', 'renderer', '{kind}', '--launch-file', '{launchFile}'],
+    command: [
+      'bun',
+      'run',
+      '{pluginRoot}/canvases/launcher.ts',
+      'renderer',
+      '{kind}',
+      '--launch-file',
+      '{launchFile}',
+    ],
   };
 }
 

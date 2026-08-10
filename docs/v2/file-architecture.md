@@ -182,7 +182,6 @@ canvases/_sdk/use-mouse.ts
 canvases/launcher.ts
 canvases/bun-cli.ts
 canvases/<kind>/*
-run-canvas.sh
 ```
 
 ### `canvases/launcher.ts`

@@ -227,7 +227,7 @@ delivery mechanism.
 The host derives its manifest from this file and launches every renderer through:
 
 ```bash
-run-canvas.sh renderer <kind> --launch-file <launch.json>
+bun run canvases/launcher.ts renderer <kind> --launch-file <launch.json>
 ```
 
 Example internal Bun/Ink config:
