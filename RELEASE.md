@@ -2,8 +2,8 @@
 
 The concrete release-archive and installer design is documented in [DELIVERY.md](./DELIVERY.md).
 
-`ft financial canvas` is currently a private, local-development project. It is not published to npm,
-and pushes to the repository do not trigger a package release.
+`ft financial canvas` is currently a public-source, local-development project. It is not yet
+published to npm, and pushes to the repository do not trigger a package release.
 
 ## Create a Local Build
 
