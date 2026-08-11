@@ -4,7 +4,7 @@
 
 - **Name**: ft financial canvas
 - **Origin**: evolved from the Feitu July Hackathon prototype
-- **Type**: local/private OpenCode plugin with independent Canvas renderer processes
+- **Type**: public-source, local-development plugin with independent Canvas renderer processes
 - **Target**: Bun and ES modules; Rust 1.88+ for native renderers
 - **Focus**: terminal-native financial visualization and LLM analysis workflows
 - **Boundary**: `src/` owns the plugin/controller; `canvases/` owns renderer manifests,

@@ -63,7 +63,7 @@ Windows 资产，除非这些边界已经被重新设计并验证。
 在目标平台的干净 runner 上执行：
 
 ```bash
-cd opencode-canvas-main
+cd ft-tui-kit
 ./scripts/package-release.sh
 ```
 
@@ -124,13 +124,8 @@ Landing page 的 `install.sh`：
 
 ## 下载安全
 
-当前仓库页面使用：
-
-```text
-http://code.non-convex.com:18118/jobby/financial-canvas
-```
-
-HTTP 不适合承载 `curl | bash` 或可执行 release。公开交付前至少应满足：
+当前尚未提供正式 HTTPS 安装页。不要在安装指引中使用未经 TLS 保护的内网或临时地址，
+也不应用它们承载 `curl | bash` 或可执行 release。公开交付前至少应满足：
 
 - landing page、`install.sh`、release 和 checksum 全部通过 HTTPS；
 - release URL 不会重定向到 HTTP；
@@ -166,10 +161,10 @@ release archive 是风险更低、可验证性更强的交付边界。
 
 ## 手工安装入口
 
-面向维护者和需要源码调试的用户，保留仓库页面：
+面向维护者和需要源码调试的用户，使用公开 GitHub 仓库页面：
 
 ```text
-http://code.non-convex.com:18118/jobby/financial-canvas
+https://github.com/FTShare-Lab/ft-tui-kit
 ```
 
 这里应展示源码构建、平台限制、Canvas v2 协议和开发说明，但不应替代普通用户的版本化

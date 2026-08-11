@@ -7,8 +7,8 @@
 项目目前处于 Hackathon 原型持续整理阶段，以本地源码方式使用，尚未发布为 npm 包。
 画布展示的行情和分析结果仅用于研发与演示，不构成投资建议。
 
-当前工作区仍使用历史目录名 `opencode-canvas-main/` 以兼容已有的相对路径配置；正式项目名
-和包标识分别为 `ft financial canvas` 与 `ft-financial-canvas`。
+仓库目录名为 `ft-tui-kit/`，正式项目名和包标识分别为
+`ft financial canvas` 与 `ft-financial-canvas`。
 
 ## 当前能力
 
@@ -61,7 +61,7 @@ OpenCode adapter 启用，Codex adapter 不注册、不启动这一能力。
 安装依赖并构建三个 host bundle（OpenCode、Codex MCP、Codex Hook）：
 
 ```bash
-cd opencode-canvas-main
+cd ft-tui-kit
 bun install
 bun run build:plugin
 ```
@@ -72,12 +72,12 @@ Rust renderer 时再运行 `./ftopencode-build`。
 ### OpenCode
 
 在需要使用画布的 OpenCode 工作区中配置本地插件。下面示例假设该工作区与
-`opencode-canvas-main/` 同级：
+`ft-tui-kit/` 同级：
 
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
-  "plugin": ["../opencode-canvas-main/src/index.ts"],
+  "plugin": ["../ft-tui-kit/src/index.ts"],
   "permission": {
     "canvas_*": "allow"
   }
@@ -87,7 +87,7 @@ Rust renderer 时再运行 `./ftopencode-build`。
 从该工作区启动 OpenCode：
 
 ```bash
-../opencode-canvas-main/ftopencode
+../ft-tui-kit/ftopencode
 ```
 
 `ftopencode` 会在已有 tmux 环境中直接启动 OpenCode；否则会询问是否创建或附加到名为
@@ -141,11 +141,11 @@ codex plugin add ft-financial-canvas@<local-marketplace-name>
 执行。Codex 同样必须运行在 tmux 内，可使用：
 
 ```bash
-../opencode-canvas-main/ftcodex
+../ft-tui-kit/ftcodex
 ```
 
 `ftcodex` 默认以 `--no-alt-screen` 启动 Codex，使对话内容进入 tmux pane 的 scrollback；
-需要恢复全屏 alternate screen 时使用 `../opencode-canvas-main/ftcodex --alt-screen`。
+需要恢复全屏 alternate screen 时使用 `../ft-tui-kit/ftcodex --alt-screen`。
 
 交互式选择需要在当前 turn 内返回时，Codex 会调用 `canvas_wait`；如果事件发生在两个 turn
 之间，Hook 会把它作为下一条用户提示的附加上下文。`social-post-card` 在 Codex 中不可用。
