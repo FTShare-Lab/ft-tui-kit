@@ -77,7 +77,8 @@ if [[ "$run_checks" == "1" ]]; then
 fi
 
 if [[ "$run_build" == "1" ]]; then
-  ./ftopencode-build --force
+  bun run build:plugin
+  bun run build:canvases -- --force
 fi
 
 [[ -f "$root_dir/dist/index.js" ]] || die 'dist/index.js is missing; run the build first'
@@ -87,6 +88,7 @@ native_renderers=(
   'chart:chart'
   'dag:dag'
   'market-table:market-table'
+  'news-list:news-list'
   'security-snapshot:security-snapshot'
 )
 for renderer in "${native_renderers[@]}"; do
@@ -110,18 +112,13 @@ mkdir -p -- "$package_root"
 payload=(
   Cargo.lock
   Cargo.toml
-  CHANGELOG.md
-  DELIVERY.md
   LICENSE
   README.md
-  RELEASE.md
   bun.lock
   canvases
   dist
-  docs
-  ftopencode
-  ftopencode-build
   package.json
+  scripts
   skills
   src
   tsconfig.json
@@ -144,8 +141,11 @@ for packaged_bin_dir in "$package_root"/canvases/*/bin/*; do
 done
 
 chmod 755 \
-  "$package_root/ftopencode" \
-  "$package_root/ftopencode-build"
+  "$package_root/scripts/build-canvas-bin.sh" \
+  "$package_root/scripts/ftcodex.sh" \
+  "$package_root/scripts/ftopencode.sh" \
+  "$package_root/scripts/install-codex-plugin.ts" \
+  "$package_root/scripts/package-release.sh"
 
 archive="$output_dir/$package_name.tar.gz"
 archive_tmp="$stage_root/$package_name.tar.gz"

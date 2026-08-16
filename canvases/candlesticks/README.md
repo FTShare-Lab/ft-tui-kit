@@ -2,7 +2,7 @@
 
 Self-contained Rust renderer for the `ft financial canvas` v2 socket protocol. This folder owns its
 manifest, launcher, renderer source, vendored charting source, dependency lock file, licenses,
-and packaged platform binaries.
+and generated binary packaging layout.
 
 ## Runtime Config
 
@@ -58,10 +58,11 @@ are `ts_millis_open` and `turnover`. Decimal values may be JSON numbers or numer
 ```text
 config.json                 Canvas manifest and command entry
 launcher.ts                 Selects the binary for the current platform/architecture
-bin/<platform>-<arch>/      Packaged renderer binaries
+bin/<platform>-<arch>/      Generated renderer binaries (ignored by Git)
 Cargo.toml                  Rust crate definition; the repository root owns Cargo.lock
 src/                        Renderer, Canvas socket client, and charting source
 ```
 
-The currently packaged binary is `bin/linux-x64/candlesticks`. Other platforms must add the
-same binary name under their matching `<platform>-<arch>` directory.
+The source repository does not track prebuilt renderer binaries. From the repository root, run
+`npm run build:canvases` to build all native renderers and place the current platform binary under
+its matching `bin/<platform>-<arch>/` directory.

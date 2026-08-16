@@ -6,9 +6,8 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
-    "ftcodex": "./ftcodex",
-    "ftopencode": "./ftopencode",
-    "ftopencode-build": "./ftopencode-build"
+    "ftcodex": "./scripts/ftcodex.sh",
+    "ftopencode": "./scripts/ftopencode.sh"
   },
   "exports": {
     ".": {
@@ -17,7 +16,8 @@
     }
   },
   "scripts": {
-    "build": "./ftopencode-build",
+    "build": "bun run build:plugin && bun run build:canvases",
+    "build:canvases": "./scripts/build-canvas-bin.sh",
     "build:plugin": "bun build ./src/index.ts --target bun --outfile dist/index.js && bun build ./src/hosts/codex/mcp-server.ts --target bun --outfile dist/codex-mcp.js && bun build ./src/hosts/codex/hook.ts --target bun --outfile dist/codex-hook.js",
     "codex:install": "bun run ./scripts/install-codex-plugin.ts",
     "prepack": "bun run build:plugin",
@@ -37,10 +37,10 @@
     "src",
     "canvases",
     "skills",
-    "scripts/install-codex-plugin.ts",
-    "ftcodex",
-    "ftopencode",
-    "ftopencode-build"
+    "scripts/build-canvas-bin.sh",
+    "scripts/ftcodex.sh",
+    "scripts/ftopencode.sh",
+    "scripts/install-codex-plugin.ts"
   ],
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.30.0",

@@ -10,6 +10,7 @@ coverage/
 .bun/
 .bun.lockb
 .memory/
+canvases/*/bin/
 canvases/*/target/
 target/
 .idea/

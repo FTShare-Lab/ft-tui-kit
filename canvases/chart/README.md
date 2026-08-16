@@ -56,5 +56,6 @@ path to trigger a reload.
 
 ## Build
 
-Run `./build` in this directory, or run `../../ftopencode-build`. The build script uses Cargo's
-incremental cache and packages the result as `bin/<platform>-<arch>/chart`.
+Run `./build` in this directory, or run `npm run build:canvases` from the repository root. The build
+script uses Cargo's incremental cache and packages the result as
+`bin/<platform>-<arch>/chart`.
