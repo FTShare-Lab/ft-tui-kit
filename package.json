@@ -6,6 +6,7 @@
   "type": "module",
   "main": "./dist/index.js",
   "bin": {
+    "ft-tui-kit": "./scripts/ft-tui-kit.ts",
     "ftcodex": "./scripts/ftcodex.sh",
     "ftopencode": "./scripts/ftopencode.sh"
   },
@@ -38,6 +39,7 @@
     "canvases",
     "skills",
     "scripts/build-canvas-bin.sh",
+    "scripts/ft-tui-kit.ts",
     "scripts/ftcodex.sh",
     "scripts/ftopencode.sh",
     "scripts/install-codex-plugin.ts"

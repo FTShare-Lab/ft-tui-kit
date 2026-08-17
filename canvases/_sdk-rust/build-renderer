@@ -13,15 +13,15 @@ if (($# == 4)); then
   [[ "$4" == "--force" ]] || { printf 'unknown option: %s\n' "$4" >&2; exit 2; }
   force=1
 fi
-root_dir="$(cd -- "$canvas_dir/../.." && pwd)"
+workspace_dir="$(cd -- "$canvas_dir/.." && pwd)"
 command -v cargo >/dev/null 2>&1 || { printf '%s/build: cargo was not found on PATH\n' "$binary" >&2; exit 127; }
 case "$(uname -s)" in Linux) platform=linux ;; Darwin) platform=darwin ;; *) printf '%s/build: unsupported platform\n' "$binary" >&2; exit 1 ;; esac
 case "$(uname -m)" in x86_64|amd64) architecture=x64 ;; aarch64|arm64) architecture=arm64 ;; *) printf '%s/build: unsupported architecture\n' "$binary" >&2; exit 1 ;; esac
 
 printf 'Building %s renderer for %s-%s...\n' "$binary" "$platform" "$architecture"
-(cd "$root_dir" && CARGO_INCREMENTAL=1 cargo build --release --locked -p "$package")
-target_root="${CARGO_TARGET_DIR:-$root_dir/target}"
-[[ "$target_root" = /* ]] || target_root="$root_dir/$target_root"
+(cd "$workspace_dir" && CARGO_INCREMENTAL=1 cargo build --release --locked -p "$package")
+target_root="${CARGO_TARGET_DIR:-$workspace_dir/target}"
+[[ "$target_root" = /* ]] || target_root="$workspace_dir/$target_root"
 source_binary="$target_root/release/$binary"
 destination_dir="$canvas_dir/bin/$platform-$architecture"
 destination_binary="$destination_dir/$binary"

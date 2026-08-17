@@ -59,7 +59,7 @@ are `ts_millis_open` and `turnover`. Decimal values may be JSON numbers or numer
 config.json                 Canvas manifest and command entry
 launcher.ts                 Selects the binary for the current platform/architecture
 bin/<platform>-<arch>/      Generated renderer binaries (ignored by Git)
-Cargo.toml                  Rust crate definition; the repository root owns Cargo.lock
+Cargo.toml                  Rust crate definition; canvases/ owns the workspace Cargo.lock
 src/                        Renderer, Canvas socket client, and charting source
 ```
 

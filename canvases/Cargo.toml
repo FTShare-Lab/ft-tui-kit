@@ -1,13 +1,13 @@
 [workspace]
 resolver = "3"
 members = [
-  "canvases/_sdk-rust",
-  "canvases/candlesticks",
-  "canvases/chart",
-  "canvases/dag",
-  "canvases/market-table",
-  "canvases/news-list",
-  "canvases/security-snapshot",
+  "_sdk-rust",
+  "candlesticks",
+  "chart",
+  "dag",
+  "market-table",
+  "news-list",
+  "security-snapshot",
 ]
 
 [workspace.package]

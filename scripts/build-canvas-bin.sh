@@ -2,6 +2,7 @@
 set -euo pipefail
 
 root_dir="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+workspace_dir="$root_dir/canvases"
 force=0
 
 if (($# > 1)); then
@@ -50,13 +51,13 @@ esac
 
 printf 'Building all native Canvas renderers for %s-%s...\n' "$platform" "$architecture"
 (
-  cd "$root_dir"
+  cd "$workspace_dir"
   CARGO_INCREMENTAL=1 cargo build --workspace --release --locked
 )
 
-target_root="${CARGO_TARGET_DIR:-$root_dir/target}"
+target_root="${CARGO_TARGET_DIR:-$workspace_dir/target}"
 if [[ "$target_root" != /* ]]; then
-  target_root="$root_dir/$target_root"
+  target_root="$workspace_dir/$target_root"
 fi
 for renderer in "${native_renderers[@]}"; do
   canvas_name="${renderer%%:*}"
